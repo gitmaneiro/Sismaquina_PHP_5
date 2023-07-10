@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Sistema de registro de falla de equipos</title>
+
+    
+    	<link href="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/bootstrap.css" rel="stylesheet">
+    	<link href="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/navbar-fixed-top.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/jquery.css">
+    
+    <script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/ie-emulation-modes-warning.js"></script>
+	
+
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+     <div id="error">
+     </div>	
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">SISMAQUINA</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SISMAQUINA</a>
+        </div>
+        <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="http://localhost/web/sismaquina/index.php?q=bienvenida">Inicio</a></li>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registros <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost/web/sismaquina/index.php?q=p_equipo">Equipos</a></li>
+                <li><a href="http://localhost/web/sismaquina/index.php?q=p_usuarios">Usuarios</a></li>
+                <li><a href="http://localhost/web/sismaquina/index.php?q=p_fallas">Fallas</a></li>
+		              </ul>
+            </li>
+	 <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fallas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost/web/sismaquina/index.php?q=p_registro">Registro de Fallas</a></li>
+                <li><a href="http://localhost/web/sismaquina/index.php?q=p_cierre">Cierre de Falla</a></li>
+                
+              </ul>
+            </li>
+           <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost/web/sismaquina/index.php?q=r_supervivencia">Probabilidad de Supervivencia vs. Horas de Operación</a></li>
+                <li><a href="http://localhost/web/sismaquina/index.php?q=r_tmfs">Tiempo Medio Fuera de Servicio TMFS (Hrs)</a></li>
+                <li><a href="http://localhost/web/sismaquina/index.php?q=r_mtbf">Tiempo Medio Entre Fallas MTBF (Hrs)</a></li>
+		<li><a href="http://localhost/web/sismaquina/index.php?q=r_causa">Causa de Paro</a></li>
+                
+              </ul>
+            </li>
+	   <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sesión<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://localhost/web/sismaquina/index.php?session=Cerrar">Salir</a></li>
+               
+              </ul>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+
+	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/jquery.js"></script>
+    	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/bootstrap.js"></script>
+	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/jquery_002.js"></script>
+	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/dataTables.js"></script>
+      	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/ie10-viewport-bug-workaround.js"></script>
+	
+
+	<script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/principal.js"></script>
+
+    <div class="container">
+  
+	
+      <!-- Main component for a primary marketing message or call to action -->
+   
+ <div class="panel panel-default">
+        <div class="panel-heading">
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-align-justify"></span> Listado de Usuarios
+  <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a data-target="#pu_buscar" data-toggle="modal"><span class="glyphicon glyphicon-search"></span> Buscar</a></li>
+      <li><a href="#" data-target="#pu_agregar" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Agregar</a></li>
+    </ul>
+  </div>
+
+</div>
+	<div class="panel-body">
+          
+  		<div class="dataTables_wrapper form-inline dt-bootstrap no-footer" id="pu_tabla_wrapper"><div class="row"><div class="col-sm-6"><div id="pu_tabla_length" class="dataTables_length"><label></label></div></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table style="width: 1109px;" aria-describedby="pu_tabla_info" role="grid" class="table table-striped  dataTable no-footer" id="pu_tabla">
+			<thead>
+    			<tr role="row" id="0"><th aria-sort="ascending" aria-label="
+					ID
+				: activado para ordenar columna descendente" style="width: 221px;" colspan="1" rowspan="1" aria-controls="pu_tabla" tabindex="0" class="sorting_asc">
+					ID
+				</th><th aria-label="
+					NOMBRE USUARIO
+				: activado para ordenar columna ascendente" style="width: 816px;" colspan="1" rowspan="1" aria-controls="pu_tabla" tabindex="0" class="sorting">
+					NOMBRE USUARIO
+				</th></tr>
+			</thead>
+			
+			<tbody>
+			
+			<tr class="odd selected" role="row"><td class="sorting_1">1</td><td>alfonzobe</td></tr></tbody> 
+  		</table></div></div><div class="row"><div class="col-sm-5"><div aria-live="polite" role="status" id="pu_tabla_info" class="dataTables_info">Mostrando de 1 hasta 1 de 1 registros</div></div><div class="col-sm-7"><div id="pu_tabla_paginate" class="dataTables_paginate paging_simple_numbers"><ul class="pagination"><li id="pu_tabla_previous" class="paginate_button previous disabled"><a tabindex="0" data-dt-idx="0" aria-controls="pu_tabla" href="#">Atrás</a></li><li class="paginate_button active"><a tabindex="0" data-dt-idx="1" aria-controls="pu_tabla" href="#">1</a></li><li id="pu_tabla_next" class="paginate_button next disabled"><a tabindex="0" data-dt-idx="2" aria-controls="pu_tabla" href="#">Adelante</a></li></ul></div></div></div></div>
+	</div> 
+        
+	</div>
+      </div>
+
+
+
+<!-- Agregar -->
+<div id="pu_agregar" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Agregar Nuevo Usuario</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal">
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="usr">Indicador:</label>
+			<div class="col-sm-10">
+			    <input class="form-control" id="pua_indicador" type="text">
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="usr">Clave:</label>
+			<div class="col-sm-10">
+		    <input class="form-control" id="pua_clave" type="password">
+			
+		  </div>
+		
+		</div>		
+	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" onclick="agregarUsuario();" class="btn btn-default">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Editar -->
+<div id="pu_editar" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Editar Usuario</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal">
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="usr">Indicador:</label>
+			<div class="col-sm-10">
+			    <input class="form-control" id="pue_indicador" type="text">
+				<input value="" id="pu_id" name="pu_id" type="hidden">
+			</div>
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="usr">Clave:</label>
+			<div class="col-sm-10">
+		    <input class="form-control" id="pue_clave" type="password">
+			</div>
+		  </div>
+		
+		
+	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" onclick="editarUsuario();" class="btn btn-default">Guardar</button>
+	<button type="submit" onclick="eliminarUsuario();" class="btn btn-default">Eliminar</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Buscar -->
+<div id="pu_buscar" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Buscar Equipo</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal">
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="usr">Indicador:</label>
+			<div class="col-sm-10">
+			    <input class="form-control" id="pub_indicador" type="text">
+			</div>
+		  </div>
+		
+		 
+			
+	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" onclick="buscarUsuarioFiltro();" class="btn btn-default">Buscar</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+	
+
+
+     
+
+
+    <script src="Sistema%20de%20registro%20de%20falla%20de%20equipos_files/p_usuarios.js"></script>
+    
+  
+
+
+</body></html>

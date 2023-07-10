@@ -1,0 +1,24 @@
+     var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+	language: 'he',
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+
+	
+	$("#pre_fecha").datepicker(options);
+	$("#prb_fecha").datepicker(options);
+
+<div class="input-group date">
+      			<input data-format="dd/MM/yyyy hh:mm:ss" type="text" class="form-control" id="pra_fecha"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    			</div>
+
+<div id="datetimepicker1" class="input-append date">
+			    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
+			    <span class="add-on">
+			      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+			      </i>
+			    </span>
+			  </div>

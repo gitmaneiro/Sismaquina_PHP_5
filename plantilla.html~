@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Sistema de registro de falla de equipos</title>
+
+    
+    	<link href="css/bootstrap.css" rel="stylesheet">
+
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    	<link href="css/navbar-fixed-top.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+    
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+	
+
+    
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+	<div style="float: right; z-index: 100000;">
+		<image src="images/pdvsa_logo120.png" style="margin-top:5px"/>
+	</div>
+     <div id="error">
+     </div>	
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">SISMAQUINA</span>
+            </span>
+            <span class="icon-bar">
+            <span class="icon-bar"></span>
+          </button>
+	<div style="float: left; z-index: 100000;">
+		<image src="images/logo42.png" style="margin-top:5px"/>
+	</div>
+	 <a class="navbar-brand" href="#"> SISMAQUINA</a>
+        </div>
+        <div style="height: 1px;" aria-expanded="false" id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="?q=bienvenida">Inicio</a></li>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Registros <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="?q=p_equipo">Equipos</a></li>
+                <li><a href="?q=p_usuarios">Usuarios</a></li>
+                <li><a href="?q=p_fallas">Fallas</a></li>
+		<li><a href="?q=p_piezas">Piezas</a></li>
+              </ul>
+            </li>
+	 <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fallas <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="?q=p_registro">Registro de Fallas</a></li>
+                <li><a href="?q=p_cierre">Cierre de Falla</a></li>
+                
+              </ul>
+            </li>
+           <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="?q=r_supervivencia">Probabilidad de Supervivencia vs. Horas de Operación</a></li>
+                <li><a href="?q=r_tmfs">Tiempo Medio Fuera de Servicio TMFS (Hrs)</a></li>
+                <li><a href="?q=r_mtbf">Tiempo Medio Entre Fallas MTBF (Hrs)</a></li>
+		<li><a href="?q=r_causa">Causa de Paro</a></li>
+                
+              </ul>
+            </li>
+	   <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sesión<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="index.php?session=Cerrar">Salir</a></li>
+               
+              </ul>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+
+	<script src="js/jquery.js"></script>
+    	<script src="js/bootstrap.js"></script>
+	<script src="js/jquery.dataTables.js"></script>
+	<script src="js/dataTables.bootstrap.js"></script>
+      	<script src="js/ie10-viewport-bug-workaround.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+
+	<script src="js/principal.js"></script>
+
+    <div class="container">
+  
+	
+     <? include($Contenido);?>
+
+    </div> 
+
+
+    <script src="js/cont/<?=$_GET["q"];?>.js"></script>
+    
+  
+
+</body></html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sistema de registro de falla de equipos</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    
+        <link rel="stylesheet" href="css/style.css">
+
+     <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+    
+    
+  </head>
+
+  <body style="background:url(images/portada.jpg); background-position:center center;  background-size:cover;  background-repeat:no-repeat;  background-attachment:fixed; ")>
+
+    <section class="login-form-wrap">
+
+  <h1>SISMAQUINA</h1>
+<?if($_GET["result"]=="novalido"){?>
+<div class="alert alert-danger" role="alert">
+        Usuario o Clave no válidos
+     </div>
+<?}?>
+  <form class="login-form" method="post" action="index.php">
+    <label>
+      <input type="text" name="Usuario" required placeholder="Usuario">
+    </label>
+    <label>
+      <input type="password" name="Clave" required placeholder="Clave">
+    </label>
+    <input type="submit" id="btn_autenticar"  value="Autenticar">
+  </form>
+ 
+</section>
+    
+    
+ <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    
+    <script src="js/bootstrap.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>   
+   
+    
+  </body>
+</html>

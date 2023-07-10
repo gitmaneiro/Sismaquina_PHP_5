@@ -1,0 +1,148 @@
+
+
+	function buscarEquipo(pe_id)
+	{
+		
+		$('#pe_id').val(pe_id);
+		$.getJSON( "server.php?k=8", { "id": pe_id, "f": "peo" },function( data ) {
+
+	
+		  if(data.length==0)
+		  {
+			
+    			alert("Sin datos que mostrar");	
+		   }	
+		else{ 	
+		  $('#pee_nombre').val(data[0]['nombre_corto']);
+		  $('#pee_descripcion').val(data[0]['descripcion']);
+		  $('#pee_produccion').val(data[0]['produccion']);	
+		  $('#pee_observaciones').val(data[0]['observaciones']);
+		  $('#pe_editar').modal('show');
+		}
+		})
+
+		
+		.error(function(jqXHR, textStatus, errorThrown) {
+        alert('Ocurrió un Error al obtener los datos: \n'+errorThrown); });
+
+		
+	}
+
+	function buscarEquipoFiltro()
+	{
+		
+		
+		  	
+		  jTable.api().ajax.url( 'server.php?k=8&f=peb&nombre_corto='+$('#peb_nombre').val()+'&descripcion='+$('#peb_descripcion').val() ).load();
+		
+
+		$('.modal-backdrop').hide(); // for black background
+		  $('body').removeClass('modal-open'); // For scroll run
+		  $('#pe_buscar .close').click();
+	          //jTable.api().ajax.reload(null, false);
+
+		
+	}
+
+	function agregarEquipo()
+	{
+		
+		
+		$.getJSON( "server.php?k=8", { "nombre_corto": $('#pea_nombre').val(),"descripcion": $('#pea_descripcion').val(),"produccion": $('#pea_produccion').val(),"observaciones": $('#pea_observaciones').val(), "f": "pea" },function( data ) {
+
+	
+		  if(data!="")
+		  {
+			
+    			alert("Ocurrió un error al tratar de guardar: "+data[2]);	
+		   }	
+		else{ 	
+		  alert("Registro exitoso!!");
+		  $('.modal-backdrop').hide(); // for black background
+		  $('body').removeClass('modal-open'); // For scroll run
+		  $('#pe_agregar .close').click();
+	          jTable.api().ajax.reload(null, false);		
+			
+		}
+		})
+
+		
+		.error(function(jqXHR, textStatus, errorThrown) {
+        alert('Ocurrió un Error al obtener los datos: \n'+errorThrown); });
+
+		
+	}
+
+	function eliminarEquipo()
+	{
+		
+		 strId = $('#pe_id').val();
+		$.getJSON( "server.php?k=8", { "id" : strId, "f": "pex" },function( data ) {
+
+	
+		  if(data!="")
+		  {
+			
+    			alert("Ocurrió un error al tratar de eliminar: "+data[2]);	
+		   }	
+		else{ 	
+		  alert("Borrado exitoso!!");
+		  $('.modal-backdrop').hide(); // for black background
+		  $('body').removeClass('modal-open'); // For scroll run
+		  $('#pe_editar .close').click();
+	          jTable.api().ajax.reload(null, false);		
+			
+		}
+		})
+
+		
+		.error(function(jqXHR, textStatus, errorThrown) {
+        alert('Ocurrió un Error al obtener los datos: \n'+errorThrown); });
+
+		
+	}
+
+	function editarEquipo()
+	{
+		
+		 strId = $('#pe_id').val();
+		$.getJSON( "server.php?k=8", { "id" : strId, "nombre_corto": $('#pee_nombre').val(),"descripcion": $('#pee_descripcion').val(),"produccion": $('#pee_produccion').val(),"observaciones": $('#pee_observaciones').val(), "f": "pee" },function( data ) {
+
+	
+		  if(data!="")
+		  {
+			
+    			alert("Ocurrió un error al tratar de guardar: "+data[2]);	
+		   }	
+		else{ 	
+		  alert("Registro exitoso!!");
+		  $('.modal-backdrop').hide(); // for black background
+		  $('body').removeClass('modal-open'); // For scroll run
+		  $('#pe_editar .close').click();
+	          jTable.api().ajax.reload(null, false);		
+			
+		}
+		})
+
+		
+		.error(function(jqXHR, textStatus, errorThrown) {
+        alert('Ocurrió un Error al obtener los datos: \n'+errorThrown); });
+
+		
+	}
+
+
+jTable = $('#pe_tabla').dataTable({"ajax": "server.php?k=8&f=pel", "sAjaxDataProp": ""});
+	
+	$('#pe_tabla tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            jTable.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+		jData = jTable.fnGetData(this);
+	    if(null!=jData)
+		buscarEquipo(jData[0]);
+        }
+    } );
